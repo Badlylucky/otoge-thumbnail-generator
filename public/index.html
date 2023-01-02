@@ -24,20 +24,38 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Yantramanav">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Zen+Kaku+Gothic+Antique">
+    <title>オンゲキカードジェネレーター</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <div class="parent">
+      <div class="card-frame">
+          <div class="card-upper-sect">
+            <div class="level-container">
+              <div class="header">
+                <span>LEVEL</span>
+              </div>
+              <div class="level-number">
+                <span>15</span>
+              </div>
+            </div>
+            <span class="diff-container">
+              <span>MASTER</span>
+            </span>
+          </div>
+          <div class="card-middle-sect">
+            <div class="song-details">
+              <div class="title">くるくるくるりん</div>
+              <div class="info">ICPC OB/OGの会 "平原"</div>
+            </div>
+          </div>
+          <div class="card-bottom-sect">
+            <img src="くるくるくるりん.png">
+          </div>
+      </div>
+    </div>
   </body>
 </html>

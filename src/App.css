@@ -36,3 +36,107 @@
     transform: rotate(360deg);
   }
 }
+
+.parent {
+  width: 100%;
+}
+.card-frame{
+  height: 372px;
+  width: 270px;
+  background-color: rgb(110, 13, 181);
+  padding: 5px;
+  margin: 0 auto;
+}
+.card-upper-sect {
+  height: 70px;
+  width: 100%;
+  display: flex;
+  padding: 3px 3px;
+}
+.level-container {
+  width: 70px;
+  height: 70px;
+  background-color: white;
+}
+.level-container > .header {
+  width: 100%;
+  height: 18px;
+  background-color: rgb(44,38,42);
+  color: white;
+  font-family: PT Sans Narrow;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+.level-container > .header > span {
+  position: relative;
+  top: -2px;
+}
+.level-container > .level-number {
+  width: 100%;
+  height: 52px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 45px;
+  font-family: Yantramanav;
+  font-weight: bold;
+}
+.level-container > .level-number > span {
+  position: relative;
+  top: 0px;
+}
+.diff-container {
+  height: 70px;
+  padding: 0 3px;
+}
+.diff-container > span {
+  position: relative;
+  bottom: -43px;
+  color: rgba(255,255,255,0.7);
+  font-size: 27px;
+  font-family: Cabin;
+  font-weight: bold;
+}
+.card-middle-sect {
+  height: 55px;
+  width: 100%;
+  background-color: rgba(0,0,0,0.65);
+  padding: 3px 0;
+}
+.song-details {
+  height: calc(100% - 12px);
+  width: 100%;
+  padding: 6px 0;
+  display: flex;
+  flex-direction: column;
+}
+.song-details > .title {
+  width: 100%;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  font-family: Zen Kaku Gothic Antique;
+  color: white;
+}
+.song-details > .info {
+  width: 100%;
+  text-align: center;
+  font-size: 11px;
+  font-family: Zen Kaku Gothic Antique;
+  color: rgba(255,255,255, 0.4);
+}
+.card-bottom-sect {
+  height: 230px;
+  width: 100%;
+  background-color: rgba(255,255,255,0.5);
+  padding: 3px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card-bottom-sect > img {
+  width: 230px;
+  height: 230px;
+}
