@@ -1,3 +1,21 @@
+作成途中
+
+# TODO
+- レベル整数の削除, 表示の調整
+- パラメータ展開できるように分離
+  - パラメータ
+    - 難易度の文字
+    - 背景の色
+    - タイトルの文字(細さ, 大きさを自動調整)
+    - composer欄の文字
+    - カバー画像
+- 色の追加(緑、オレンジ、赤、紫)
+  - 色は背景の1色だけでOK
+- 画像として保存できるようにする
+  - node-html-to-image
+  - https://www.npmjs.com/package/node-html-to-image
+- GitHub Pagesにデプロイ
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
