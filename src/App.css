@@ -41,13 +41,29 @@
   width: 100%;
 }
 .card-frame{
-  height: 372px;
-  width: 270px;
+  height: 450px;
+  width: 380px;
   background-color: rgb(110, 13, 181);
-  padding: 5px;
+  background-clip: padding-box;
   margin: 0 auto;
+  border: solid 3px rgba(110,13,181,0.45);
 }
 .card-upper-sect {
+  height: 350px;
+  width: 100%;
+  padding: 3px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card-upper-sect > img {
+  width: 300px;
+  height: 300px;
+  border: solid rgba(255,255,255, 0.8);
+}
+.card-middle-sect {
+  position: relative;
+  top: -40px;
   height: 70px;
   width: 100%;
   display: flex;
@@ -55,16 +71,18 @@
 }
 .level-container {
   width: 70px;
-  height: 70px;
-  background-color: white;
+  height: 75px;
+  border: solid 1px rgba(255,255,255, 0.8);
+  margin: 0 10px;
+  z-index: 10;
 }
 .level-container > .header {
   width: 100%;
-  height: 18px;
-  background-color: rgb(44,38,42);
-  color: white;
+  height: 22px;
+  background-color: white;
+  color: rgb(10,45,65);
   font-family: PT Sans Narrow;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
   text-align: center;
 }
@@ -74,11 +92,13 @@
 }
 .level-container > .level-number {
   width: 100%;
-  height: 52px;
+  height: 53px;
   margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgb(10,45,65);
+  color: white;
   font-size: 45px;
   font-family: Yantramanav;
   font-weight: bold;
@@ -88,19 +108,25 @@
   top: 0px;
 }
 .diff-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   height: 70px;
   padding: 0 3px;
 }
 .diff-container > span {
   position: relative;
-  bottom: -43px;
+  bottom: -12px;
   color: rgba(255,255,255,0.7);
-  font-size: 27px;
+  font-size: 40px;
   font-family: Cabin;
   font-weight: bold;
 }
-.card-middle-sect {
-  height: 55px;
+.card-bottom-sect {
+  position: relative;
+  top: -53px;
+  height: 65px;
   width: 100%;
   background-color: rgba(0,0,0,0.65);
   padding: 3px 0;
@@ -111,14 +137,16 @@
   padding: 6px 0;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 .song-details > .title {
-  width: 100%;
+  width: 98%;
   text-align: center;
   font-size: 22px;
   font-weight: bold;
   font-family: Zen Kaku Gothic Antique;
   color: white;
+  border-bottom: solid 1px rgba(255,255,255, 0.8);
 }
 .song-details > .info {
   width: 100%;
@@ -126,17 +154,4 @@
   font-size: 11px;
   font-family: Zen Kaku Gothic Antique;
   color: rgba(255,255,255, 0.4);
-}
-.card-bottom-sect {
-  height: 230px;
-  width: 100%;
-  background-color: rgba(255,255,255,0.5);
-  padding: 3px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.card-bottom-sect > img {
-  width: 230px;
-  height: 230px;
 }
