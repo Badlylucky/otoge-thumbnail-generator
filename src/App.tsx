@@ -54,7 +54,15 @@ const InputField = () => {
         onChange={handleCoverChange}>
       </input>
       <p>{levelVisible.toString()}</p>
-      <Generate/>
+      <Generate
+        level={level}
+        levelVisible={levelVisible}
+        difficulty={difficulty}
+        color={color}
+        title={title}
+        composer={composer}
+        cover={cover}
+      />
     </div>
   );
 }
