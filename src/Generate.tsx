@@ -1,16 +1,16 @@
 import React from 'react';
 import './card.css';
 
-type Props = {
-  level: number
-  levelVisible: boolean
-  difficulty: string
-  color: string
-  title: string
-  composer: string
-  cover: string
+interface Status {
+  level: number;
+  levelVisible: boolean;
+  difficulty: string;
+  color: string;
+  title: string;
+  composer: string;
+  cover: string;
 }
-const Generate = (props: Props) => {
+const Generate = (props: Status) => {
   return (
     <div className="parent">
       <div className="card-frame" style={{backgroundColor: props.color}}>
