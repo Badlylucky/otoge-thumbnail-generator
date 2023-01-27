@@ -1,3 +1,12 @@
+* {
+  box-sizing: initial !important;
+}
+*::before {
+  box-sizing: initial !important;
+}
+*::after {
+  box-sizing: initial !important;
+}
 .parent {
   width: 100%;
   padding: 20px;
@@ -101,6 +110,7 @@
 }
 .song-details > .title {
   width: 98%;
+  min-height: 26px;
   text-align: center;
   font-size: 22px;
   font-weight: bold;
