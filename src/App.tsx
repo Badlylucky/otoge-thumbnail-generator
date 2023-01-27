@@ -1,6 +1,8 @@
 import React, { ChangeEvent, useState } from 'react';
 import Generate from './Generate';
 import InputField from './InputField';
+import { Col, Row } from 'antd';
+import 'antd/dist/reset.css';
 import './App.css';
 
 interface Status {
@@ -32,27 +34,31 @@ const App = () => {
     setCover(newState.cover);
   }
   return(
-    <div>
-      <InputField
-        level={level}
-        levelVisible={levelVisible}
-        difficulty={difficulty}
-        color={color}
-        title={title}
-        composer={composer}
-        cover={cover}
-        onAllStatusUpdate={updateAllStates}
-      />
-      <Generate
-        level={level}
-        levelVisible={levelVisible}
-        difficulty={difficulty}
-        color={color}
-        title={title}
-        composer={composer}
-        cover={cover}
-      />
-    </div>
+    <Row>
+      <Col span={12}>
+        <InputField
+          level={level}
+          levelVisible={levelVisible}
+          difficulty={difficulty}
+          color={color}
+          title={title}
+          composer={composer}
+          cover={cover}
+          onAllStatusUpdate={updateAllStates}
+        />
+      </Col>
+      <Col span={12}>
+        <Generate
+          level={level}
+          levelVisible={levelVisible}
+          difficulty={difficulty}
+          color={color}
+          title={title}
+          composer={composer}
+          cover={cover}
+        />
+      </Col>
+    </Row>
   );
 }
 
