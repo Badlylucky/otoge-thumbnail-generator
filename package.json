@@ -39,5 +39,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "antd": "^5.1.6",
+    "antd-colorpicker": "^1.0.0"
   }
 }
