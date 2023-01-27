@@ -2,6 +2,7 @@ import React, { ChangeEvent, useState } from 'react';
 import Generate from './Generate';
 import './App.css';
 
+const fileImage = new Image();
 const InputField = () => {
   const [level, setLevel] = useState(14);
   const [levelVisible, setLevelVisible] = useState(false);
@@ -9,13 +10,20 @@ const InputField = () => {
   const [color, setColor] = useState('#6e0db5')
   const [title, setTitle] = useState('　');
   const [composer, setComposer] = useState('　');
-  const [cover, setCover] = useState<File>();
+  const [cover, setCover] = useState(' ');
   const handleCheck = () => {
     setLevelVisible(!levelVisible);
   }
   const handleCoverChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      setCover(e.target.files[0]);
+      const newTarget = e.target.files[0];
+      if (!newTarget.type.includes('image/')) {
+        setCover('');
+        return;
+      }
+      const newTargetURL = window.URL.createObjectURL(newTarget);
+      setCover(newTargetURL);
+      return;
     }
   };
   return(
@@ -53,7 +61,6 @@ const InputField = () => {
       <input type="file" name="cover" accept="image/png, image/jpeg, image/gif"
         onChange={handleCoverChange}>
       </input>
-      <p>{levelVisible.toString()}</p>
       <Generate
         level={level}
         levelVisible={levelVisible}
