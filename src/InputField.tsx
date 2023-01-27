@@ -1,4 +1,8 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
+import {Checkbox, Input, InputNumber} from 'antd';
+import {Colorpicker, AnyColorFormat} from 'antd-colorpicker';
+import 'antd/dist/reset.css';
+
 interface Status {
   level: number;
   levelVisible: boolean;
@@ -12,31 +16,38 @@ interface Status {
 const InputField = (props: Status) => {
   const nowStatus:Status = { ...props };
   const [checked, setChecked] = useState(false);
+  const [nowcolor, setNowcolor] = useState<AnyColorFormat>({
+    r: 110,
+    g: 13,
+    b: 181,
+    a: 1,
+  });
   const changeDifficulty = (e: ChangeEvent<HTMLInputElement>) => {
     nowStatus.difficulty = e.currentTarget.value;
     props.onAllStatusUpdate(nowStatus);
-  }
-  const changeLevel = (e: ChangeEvent<HTMLInputElement>) => {
-    nowStatus.level = parseInt(e.currentTarget.value);
+  };
+  const changeLevel = (value: number | null) => {
+    nowStatus.level = value ?? 0;
     props.onAllStatusUpdate(nowStatus);
-  }
+  };
   const changeLevelVisible = () => {
     nowStatus.levelVisible = (!nowStatus.levelVisible);
     setChecked(nowStatus.levelVisible);
     props.onAllStatusUpdate(nowStatus);
-  }
-  const changeColor = (e: ChangeEvent<HTMLInputElement>) => {
-    nowStatus.color = e.currentTarget.value;
+  };
+  const changeColor = (color: AnyColorFormat) => {
+    nowStatus.color = color.hex;
+    setNowcolor(color);
     props.onAllStatusUpdate(nowStatus);
-  }
+  };
   const changeTitle = (e: ChangeEvent<HTMLInputElement>) => {
     nowStatus.title = e.currentTarget.value;
     props.onAllStatusUpdate(nowStatus);
-  }
+  };
   const changeComposer = (e: ChangeEvent<HTMLInputElement>) => {
     nowStatus.composer = e.currentTarget.value;
     props.onAllStatusUpdate(nowStatus);
-  }
+  };
   const changeCoverChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const newTarget = e.target.files[0];
@@ -54,33 +65,35 @@ const InputField = (props: Status) => {
   return (
     <div>
       <label>Difficulty: </label>
-      <input type="text" placeholder="MASTER"
+      <Input placeholder="MASTER"
         onChange={changeDifficulty}>
-      </input>
+      </Input>
       <br/>
       <label>Level: </label>
-      <input type="number" defaultValue={nowStatus.level}
+      <InputNumber defaultValue={nowStatus.level} min={0} max={99}
+        addonBefore="Level" 
         onChange={changeLevel}>
-      </input>
+      </InputNumber>
       <label>visible: </label>
       <input type="checkbox" checked={checked}
         onChange={changeLevelVisible}>
       </input>
       <br/>
       <label>Color: </label>
-      <input type="color" defaultValue={nowStatus.color}
+      <Colorpicker defaultValue={nowStatus.color}
+        value={nowcolor}
         onChange={changeColor}>
-      </input>
+      </Colorpicker>
       <br/>
       <label>Title: </label>
-      <input type="text" placeholder="其のエメラルドを見よ"
+      <Input placeholder="其のエメラルドを見よ"
         onChange={changeTitle}>
-      </input>
+      </Input>
       <br/>
       <label>Composer: </label>
-      <input type="text" placeholder="庭師"
+      <Input placeholder="庭師"
         onChange={changeComposer}>
-      </input>
+      </Input>
       <br/>
       <label>Cover Image: </label>
       <input type="file" name="cover" accept="image/png, image/jpeg, image/gif"
