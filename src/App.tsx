@@ -18,7 +18,7 @@ const App = () => {
   const [level, setLevel] = useState(14);
   const [levelVisible, setLevelVisible] = useState(false);
   const [difficulty, setDifficulty] = useState('　');
-  const [color, setColor] = useState('rgba(110,13,181,1)');
+  const [color, setColor] = useState('rgba(142,27,229,1)');
   const [title, setTitle] = useState('　');
   const [composer, setComposer] = useState('　');
   const [cover, setCover] = useState(' ');

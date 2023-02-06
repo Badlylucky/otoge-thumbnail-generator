@@ -17,9 +17,9 @@ interface Status {
 const InputField = (props: Status) => {
   const nowStatus:Status = { ...props };
   const [nowcolor, setNowcolor] = useState<AnyColorFormat>({
-    r: 110,
-    g: 13,
-    b: 181,
+    r: 142,
+    g: 27,
+    b: 229,
     a: 1,
   });
   const changeDifficulty = (e: ChangeEvent<HTMLInputElement>) => {
@@ -78,7 +78,8 @@ const InputField = (props: Status) => {
       <label>Color: </label>
       <Colorpicker defaultValue={nowStatus.color}
         value={nowcolor}
-        onChange={changeColor}>
+        onChange={changeColor}
+        presetColors={['#00ab84', '#ff7e00', '#f12929', '#8e1be5', '#16ff47', '#ffba00', '#fa0667', '#a810ff']}>
       </Colorpicker>
       <Input placeholder="其のエメラルドを見よ"
         addonBefore="Title"
