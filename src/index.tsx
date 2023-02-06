@@ -8,5 +8,7 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <App/>
+  <div className='outframe'>
+    <App/>
+  </div>
 );

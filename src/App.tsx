@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Generate from './Generate';
-import InputField from './InputField';
+import Generate from './generator/Generate';
+import InputField from './input/InputField';
 import { Col, Row } from 'antd';
 import 'antd/dist/reset.css';
 import './App.css';
@@ -32,7 +32,7 @@ const App = () => {
     setCover(newState.cover);
   }
   return(
-    <Row>
+    <Row className="inframe">
       <Col xs={24} sm={24} md={24} lg={12}>
         <InputField
           level={level}
