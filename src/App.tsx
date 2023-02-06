@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { useState } from 'react';
 import Generate from './Generate';
 import InputField from './InputField';
 import { Col, Row } from 'antd';
@@ -18,13 +18,11 @@ const App = () => {
   const [level, setLevel] = useState(14);
   const [levelVisible, setLevelVisible] = useState(false);
   const [difficulty, setDifficulty] = useState('　');
-  const [color, setColor] = useState('#6e0db5')
+  const [color, setColor] = useState('rgba(110,13,181,1)');
   const [title, setTitle] = useState('　');
   const [composer, setComposer] = useState('　');
   const [cover, setCover] = useState(' ');
   const updateAllStates = (newState: Status) => {
-    console.log('fire');
-    console.log(newState);
     setLevel(newState.level);
     setLevelVisible(newState.levelVisible);
     setDifficulty(newState.difficulty);

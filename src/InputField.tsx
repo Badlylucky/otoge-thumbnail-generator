@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useState } from 'react';
-import {Checkbox, Input, InputNumber} from 'antd';
+import {Switch, Input, InputNumber, Space} from 'antd';
+import {CheckOutlined} from '@ant-design/icons';
 import {Colorpicker, AnyColorFormat} from 'antd-colorpicker';
 import 'antd/dist/reset.css';
 
@@ -15,7 +16,6 @@ interface Status {
 }
 const InputField = (props: Status) => {
   const nowStatus:Status = { ...props };
-  const [checked, setChecked] = useState(false);
   const [nowcolor, setNowcolor] = useState<AnyColorFormat>({
     r: 110,
     g: 13,
@@ -30,13 +30,13 @@ const InputField = (props: Status) => {
     nowStatus.level = value ?? 0;
     props.onAllStatusUpdate(nowStatus);
   };
-  const changeLevelVisible = () => {
-    nowStatus.levelVisible = (!nowStatus.levelVisible);
-    setChecked(nowStatus.levelVisible);
+  const changeLevelVisible = (checked: boolean) => {
+    nowStatus.levelVisible = checked;
     props.onAllStatusUpdate(nowStatus);
   };
   const changeColor = (color: AnyColorFormat) => {
-    nowStatus.color = color.hex;
+    nowStatus.color = `rgba(${color.rgb.r},${color.rgb.g},${color.rgb.b},${color.rgb.a})`;
+    console.log(color);
     setNowcolor(color);
     props.onAllStatusUpdate(nowStatus);
   };
@@ -64,34 +64,28 @@ const InputField = (props: Status) => {
   };
   return (
     <div>
-      <label>Difficulty: </label>
-      <Input placeholder="MASTER"
-        onChange={changeDifficulty}>
-      </Input>
-      <br/>
-      <label>Level: </label>
-      <InputNumber defaultValue={nowStatus.level} min={0} max={99}
-        addonBefore="Level" 
-        onChange={changeLevel}>
-      </InputNumber>
-      <label>visible: </label>
-      <input type="checkbox" checked={checked}
-        onChange={changeLevelVisible}>
-      </input>
-      <br/>
+      <Space>
+        <Input placeholder="MASTER"
+          addonBefore="Difficulty"
+          onChange={changeDifficulty}>
+        </Input>
+        <InputNumber defaultValue={nowStatus.level} placeholder="14" min={0} max={99}
+          addonBefore="Level"
+          addonAfter={<Switch checkedChildren={<CheckOutlined/>} onChange={changeLevelVisible}/>} 
+          onChange={changeLevel}>
+        </InputNumber>
+      </Space>
       <label>Color: </label>
       <Colorpicker defaultValue={nowStatus.color}
         value={nowcolor}
         onChange={changeColor}>
       </Colorpicker>
-      <br/>
-      <label>Title: </label>
       <Input placeholder="其のエメラルドを見よ"
+        addonBefore="Title"
         onChange={changeTitle}>
       </Input>
-      <br/>
-      <label>Composer: </label>
       <Input placeholder="庭師"
+        addonBefore="Composer"
         onChange={changeComposer}>
       </Input>
       <br/>
