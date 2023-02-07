@@ -8,7 +8,12 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <div className='outframe'>
-    <App/>
-  </div>
+  <>
+    <header className='header'>
+      <span>音ゲー風カードジェネレーター</span>
+    </header>
+    <div className='outframe'>
+      <App/>
+    </div>
+  </>
 );

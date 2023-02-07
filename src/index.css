@@ -1,3 +1,16 @@
+.header {
+  width: max(100%, 470px);
+  background-color: #00ab84;
+  color: whitesmoke;
+  font-size: 20px;
+  font-weight: bold;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding-left: 8%;
+  padding-right: 8%; 
+}
+
 .outframe {
   display: flex;
   justify-content: center;
