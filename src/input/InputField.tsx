@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState } from 'react';
-import {Switch, Input, InputNumber, Space} from 'antd';
+import {Switch, Input, InputNumber, Space, Row, Col} from 'antd';
 import {CheckOutlined} from '@ant-design/icons';
 import {Colorpicker, AnyColorFormat} from 'antd-colorpicker';
 import 'antd/dist/reset.css';
@@ -63,38 +63,51 @@ const InputField = (props: Status) => {
     }
   };
   return (
-    <div>
-      <Space>
-        <Input placeholder="MASTER"
+    <Row gutter={[0, 2]}>
+      <Col span={12}>
+        <Input style={{width: 'calc(100% - 24px)'}} 
+          placeholder="MASTER"
           addonBefore="Difficulty"
           onChange={changeDifficulty}>
         </Input>
-        <InputNumber defaultValue={nowStatus.level} placeholder="14" min={0} max={99}
+      </Col>
+      <Col span={12}>
+        <InputNumber style={{width: 'calc(75% - 24px)'}} 
+          defaultValue={nowStatus.level} placeholder="14" min={0} max={99}
           addonBefore="Level"
           addonAfter={<Switch checkedChildren={<CheckOutlined/>} onChange={changeLevelVisible}/>} 
           onChange={changeLevel}>
         </InputNumber>
-      </Space>
-      <label>Color: </label>
-      <Colorpicker defaultValue={nowStatus.color}
-        value={nowcolor}
-        onChange={changeColor}
-        presetColors={['#00ab84', '#ff7e00', '#f12929', '#8e1be5', '#16ff47', '#ffba00', '#fa0667', '#a810ff']}>
-      </Colorpicker>
-      <Input placeholder="其のエメラルドを見よ"
-        addonBefore="Title"
-        onChange={changeTitle}>
-      </Input>
-      <Input placeholder="庭師"
-        addonBefore="Composer"
-        onChange={changeComposer}>
-      </Input>
-      <br/>
-      <label>Cover Image: </label>
-      <input type="file" name="cover" accept="image/png, image/jpeg, image/gif"
-        onChange={changeCoverChange}>
-      </input>
-    </div>
+      </Col>
+      <Col span={24}>
+        <Colorpicker defaultValue={nowStatus.color}
+          popout
+          value={nowcolor}
+          onChange={changeColor}
+          presetColors={['#00ab84', '#ff7e00', '#f12929', '#8e1be5', '#16ff47', '#ffba00', '#fa0667', '#a810ff']}>
+        </Colorpicker>
+      </Col>
+      <Col span={24}>
+        <Input style={{width: 'calc(100% - 24px)'}}
+          placeholder="其のエメラルドを見よ"
+          addonBefore="Title"
+          onChange={changeTitle}>
+        </Input>
+      </Col>
+      <Col span={24}>
+        <Input style={{width: 'calc(100% - 24px)'}}
+          placeholder="庭師"
+          addonBefore="Composer"
+          onChange={changeComposer}>
+        </Input>
+      </Col>
+      <Col span={24}>
+        <label>Cover Image: </label>
+        <input type="file" name="cover" accept="image/png, image/jpeg, image/gif"
+          onChange={changeCoverChange}>
+        </input>
+      </Col>
+    </Row>
   );
 }
 
