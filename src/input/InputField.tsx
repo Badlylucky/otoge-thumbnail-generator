@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useState } from 'react';
-import {Switch, Input, InputNumber, Space, Row, Col} from 'antd';
+import {Switch, Input, InputNumber, Space, Row, Col, Upload, UploadProps, UploadFile} from 'antd';
 import {CheckOutlined} from '@ant-design/icons';
+import {UploadRequestOption as RcCustomRequestOptions} from 'rc-upload/lib/interface';
 import {Colorpicker, AnyColorFormat} from 'antd-colorpicker';
 import 'antd/dist/reset.css';
 
@@ -22,6 +23,7 @@ const InputField = (props: Status) => {
     b: 229,
     a: 1,
   });
+  const [fileList, setFileList] = useState<UploadFile[]>([]);
   const changeDifficulty = (e: ChangeEvent<HTMLInputElement>) => {
     nowStatus.difficulty = e.currentTarget.value;
     props.onAllStatusUpdate(nowStatus);
@@ -48,19 +50,35 @@ const InputField = (props: Status) => {
     nowStatus.composer = e.currentTarget.value;
     props.onAllStatusUpdate(nowStatus);
   };
-  const changeCoverChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      const newTarget = e.target.files[0];
-      if (!newTarget.type.includes('image/')) {
-        nowStatus.cover = '';
-        props.onAllStatusUpdate(nowStatus);
-        return;
+  const customRequest = (option: RcCustomRequestOptions) => {
+    try {
+      if (option.onProgress) {
+        console.log(0);
+        option.onProgress({percent: 0});
       }
-      const newTargetURL = window.URL.createObjectURL(newTarget);
-      nowStatus.cover = newTargetURL;
-      props.onAllStatusUpdate(nowStatus);
-      return;
+      if (option?.file instanceof File) {
+        const newTarget = option.file;
+        if (!newTarget.type.includes('image/')) {
+          nowStatus.cover = '';
+          props.onAllStatusUpdate(nowStatus);
+          return;
+        }
+        const newTargetURL = window.URL.createObjectURL(newTarget);
+        nowStatus.cover = newTargetURL;
+        props.onAllStatusUpdate(nowStatus);
+        if (option.onSuccess && option.onProgress) {
+          console.log(100);
+          option.onProgress({percent: 100});
+          option.onSuccess("ok");
+        }
+      }
+    } catch (error) {
+      console.log(error);
     }
+    return;
+  };
+  const changeCoverChange: UploadProps['onChange'] = ({ fileList: newFileList }) => {
+    setFileList(newFileList);
   };
   return (
     <Row gutter={[0, 2]}>
@@ -102,10 +120,19 @@ const InputField = (props: Status) => {
         </Input>
       </Col>
       <Col span={24}>
-        <label>Cover Image: </label>
+        {/* <label>Cover Image: </label>
         <input type="file" name="cover" accept="image/png, image/jpeg, image/gif"
           onChange={changeCoverChange}>
-        </input>
+        </input> */}
+        <Upload
+          accept='image/*'
+          listType='picture-card'
+          fileList={fileList}
+          onChange={changeCoverChange}
+          customRequest={customRequest}
+        >
+          {fileList.length < 1 && '+ Upload'}
+        </Upload>
       </Col>
     </Row>
   );
