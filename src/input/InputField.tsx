@@ -4,6 +4,7 @@ import {CheckOutlined} from '@ant-design/icons';
 import {UploadRequestOption as RcCustomRequestOptions} from 'rc-upload/lib/interface';
 import {Colorpicker, AnyColorFormat} from 'antd-colorpicker';
 import 'antd/dist/reset.css';
+import assert from 'assert';
 
 interface Status {
   level: number;
@@ -52,10 +53,8 @@ const InputField = (props: Status) => {
   };
   const customRequest = (option: RcCustomRequestOptions) => {
     try {
-      if (option.onProgress) {
-        console.log(0);
-        option.onProgress({percent: 0});
-      }
+      assert(option.onProgress);
+      option.onProgress({percent: 0});
       if (option?.file instanceof File) {
         const newTarget = option.file;
         if (!newTarget.type.includes('image/')) {
@@ -66,11 +65,12 @@ const InputField = (props: Status) => {
         const newTargetURL = window.URL.createObjectURL(newTarget);
         nowStatus.cover = newTargetURL;
         props.onAllStatusUpdate(nowStatus);
-        if (option.onSuccess && option.onProgress) {
-          console.log(100);
+        setTimeout(() => {
+          assert(option.onProgress);
+          assert(option.onSuccess);
           option.onProgress({percent: 100});
           option.onSuccess("ok");
-        }
+        }, 100);
       }
     } catch (error) {
       console.log(error);

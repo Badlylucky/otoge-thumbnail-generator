@@ -42,6 +42,7 @@
   },
   "devDependencies": {
     "antd": "^5.1.6",
-    "antd-colorpicker": "^1.0.0"
+    "antd-colorpicker": "^1.0.0",
+    "assert": "^2.0.0"
   }
 }
