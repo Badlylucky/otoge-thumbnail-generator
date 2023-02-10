@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <>
-    <header className='header'>
+    <header className='appheader'>
       <span>音ゲー風カードジェネレーター</span>
     </header>
     <div className='outframe'>
