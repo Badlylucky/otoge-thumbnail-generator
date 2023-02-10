@@ -1,8 +1,26 @@
 name: deploy-github-pages
-on: [push]
+on:
+  push:
+    paths-ignore:
+      - 'docs/**'
 jobs:
-  check-bats-version:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - run: npm run deploy
+      - name: clone repository
+        uses: actions/checkout@v3
+      - name: git setup
+        run: |
+          git config --global user.name $user_name
+          git config --global user.email $user_email
+        env:
+          user_name: 'github-acitons[bot]'
+          user_email: '41898282+github-actions[bot]@users.noreply.github.com' 
+      - name: setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 19
+      - name: install dependencies
+        run: npm install
+      - name: build app
+        run: npm run deploy
