@@ -1,20 +1,16 @@
-作成途中
+# Otoge Thumbnail Generator
+
+Generate cards like the thumbnail of CHUNITHM.
+
+Try it: https://badlylucky.github.io/otoge-thumbnail-generator/
 
 # TODO
-- レベル整数の削除, 表示の調整
-- パラメータ展開できるように分離
-  - パラメータ
-    - 難易度の文字
-    - 背景の色
-    - タイトルの文字(細さ, 大きさを自動調整)
-    - composer欄の文字
-    - カバー画像
-- 色の追加(緑、オレンジ、赤、紫)
-  - 色は背景の1色だけでOK
-- 画像として保存できるようにする
+
+- ~~画像として保存できるようにする~~
   - node-html-to-image
   - https://www.npmjs.com/package/node-html-to-image
 - GitHub Pagesにデプロイ
+- GitHub Actionsに対応
 
 # Getting Started with Create React App
 
