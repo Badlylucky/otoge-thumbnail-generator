@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from 'react';
 import assert from 'assert';
 import {Switch, Input, InputNumber, Row, Col, Space, Upload, UploadProps, UploadFile} from 'antd';
-import {CheckOutlined} from '@ant-design/icons';
+import {CheckOutlined, CloseOutlined} from '@ant-design/icons';
 import {UploadRequestOption as RcCustomRequestOptions} from 'rc-upload/lib/interface';
 import {Colorpicker, AnyColorFormat} from 'antd-colorpicker';
 import 'antd/dist/reset.css';
@@ -96,7 +96,7 @@ const InputField = (props: Status) => {
           <InputNumber style={{width: '75%'}} 
             defaultValue={nowStatus.level} placeholder="14" min={0} max={99}
             addonBefore="Level"
-            addonAfter={<Switch checkedChildren={<CheckOutlined/>} onChange={changeLevelVisible}/>} 
+            addonAfter={<Switch checkedChildren={<CheckOutlined />} unCheckedChildren={<CloseOutlined />} onChange={changeLevelVisible}/>} 
             onChange={changeLevel}>
           </InputNumber>
         </Col>
