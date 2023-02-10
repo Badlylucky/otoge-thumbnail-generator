@@ -15,7 +15,7 @@ const Generate = (props: Status) => {
     <div className="parent">
       <div className="card-frame" style={{backgroundColor: props.color}}>
         <div className="card-upper-sect">
-          <img src={props.cover}/>
+          <img src={props.cover} alt=""/>
         </div>
         <div className="card-middle-sect">
           <div className="level-container" style={{display: props.levelVisible ? 'block' : 'none'}}>
