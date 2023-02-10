@@ -118,7 +118,7 @@ const InputField = (props: Status) => {
             onChange={changeCoverChange}
             customRequest={customRequest}
           >
-            {fileList.length < 1 && '+ Upload'}
+            {fileList.length < 1 && '+ Cover'}
           </Upload>
         </Col>
       </Row>
