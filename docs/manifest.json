@@ -1,7 +1,7 @@
 {
   "short_name": "otoge-thumbnail-generator",
   "name": "otoge-thumbnail-generator",
-  "start_url": ".",
+  "start_url": "https://badlylucky.github.io/otoge-thumbnail-generator/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
